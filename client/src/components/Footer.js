@@ -8,6 +8,7 @@ const Footer = () => {
     <Jumbotron fluid className='text-light bg-dark'>
       <Container style={{ textAlign: 'center'}}>
         <h5>Thank you for Visiting our site!</h5>
+        <br></br>
         <p>Developed by</p>
         <CardGroup >
           

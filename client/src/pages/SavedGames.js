@@ -2,13 +2,13 @@
 // import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
 // import Auth from '../utils/auth';
-// import { searchGames } from '../utils/API';
+// import { Main } from '../utils/API';
 // import { saveGameIds, getSavedGameIds } from '../utils/localStorage';
 
 // import { useMutation } from '@apollo/client';
-// import { SAVE_BOOK } from '../utils/mutations';
+// import { SAVE_GAME } from '../utils/mutations';
 
-// const SearchGames = () => {
+// const Main = () => {
 //   // create state for holding returned google api data
 //   const [searchedGames, setSearchedGames] = useState([]);
 //   // create state for holding our search field data
@@ -17,7 +17,7 @@
 //   // create state to hold saved gameId values
 //   const [savedGameIds, setSavedGameIds] = useState(getSavedGameIds());
 
-//   const [saveGame] = useMutation(SAVE_BOOK);
+//   const [saveGame] = useMutation(SAVE_GAME);
 
 
 //   // set up useEffect hook to save `savedGameIds` list to localStorage on component unmount
@@ -35,7 +35,7 @@
 //     }
 
 //     try {
-//       const response = await searchGames(searchInput);
+//       const response = await Main(searchInput);
 
 //       if (!response.ok) {
 //         throw new Error('something went wrong!');
@@ -146,4 +146,4 @@
 //   );
 // };
 
-// export default SearchGames;
+// export default Main;

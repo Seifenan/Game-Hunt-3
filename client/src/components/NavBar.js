@@ -8,10 +8,7 @@ import LogIn from './LogIn';
 
 import Auth from '../utils/auth';
 
-
-
-
-function NavBar() {
+const NavBar = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (

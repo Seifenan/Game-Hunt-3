@@ -1,1 +1,1 @@
-# project-3-renameApp
+# project-3-game-hunt

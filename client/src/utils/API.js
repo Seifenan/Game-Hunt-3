@@ -50,18 +50,6 @@ export const deleteGame = (gameId, token) => {
   });
 };
 
-// make a search to a games api
-// Update This API!!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 export const searchGames = (query) => {
-  var url = `https://api.rawg.io/api/games?search=${query}&key=65f84827e818425688a7edfcb6ab1f5f`
-  fetch(url)
-  .then(function (response) {
-    return response
-  });
+  return fetch(`https://api.rawg.io/api/games?search=${query}&key=65f84827e818425688a7edfcb6ab1f5f`);
 };
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
-// export const searchGames = (query) => {
-//   return fetch(`https://api.rawg.io/api/games?search=${query}&key=65f84827e818425688a7edfcb6ab1f5f`);
-// };

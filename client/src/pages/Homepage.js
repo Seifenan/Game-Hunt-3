@@ -42,19 +42,18 @@ const Homepage = () => {
         throw new Error('something went wrong!');
       }
 
-      const { items } = await response.json();
+      const items = await response.json();
+      
 
-      console.log(items)
-
-      console.log(response)
+      console.log(response);
 
 
-      const gameData = items.map((game) => ({
-        gameId: game.results.slug
-        // title: game.results.name,
-        // image: game.results.background_image || ['No Background Image']
-        // releaseDate: game.results.released,
-        // esrbRating: game.results.esrb_rating.name || ['No Rating Available'],
+      const gameData = items.results.map((game) => ({
+        gameId: game.slug,
+        title: game.name,
+        image: game.background_image || ['No Background Image'],
+        releaseDate: game.released,
+        esrbRating: game.esrb_rating && game.esrb_rating.name,
       }));
 
       setSearchedGames(gameData);
@@ -65,7 +64,6 @@ const Homepage = () => {
   };
 
   
-
   // create function to handle saving a game to our database
   const handleSaveGame = async (gameId) => {
     // find the game in `searchedGames` state by the matching id
@@ -92,7 +90,7 @@ const Homepage = () => {
 
   return (
     <>
-      <Jumbotron fluid="true" className='text-light bg-primary' style={{ textAlign: 'center' }}>
+      <Jumbotron fluid className='text-light bg-primary' style={{ textAlign: 'center' }}>
         <Container>
           <h1>Search for Games!</h1>
           <Form onSubmit={handleFormSubmit}>

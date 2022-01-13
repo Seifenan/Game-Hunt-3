@@ -45,11 +45,11 @@ const Homepage = () => {
       const { items } = await response.json();
 
       const gameData = items.map((game) => ({
-        gameId: game.id,
-        authors: game.volumeInfo.authors || ['No author to display'],
-        title: game.volumeInfo.title,
-        description: game.volumeInfo.description,
-        image: game.volumeInfo.imageLinks?.thumbnail || '',
+        gameId: game.results.slug,
+        title: game.results.name,
+        image: game.results.background_image || ['No Background Image']
+        // releaseDate: game.results.released,
+        // esrbRating: game.results.esrb_rating.name || ['No Rating Available'],
       }));
 
       setSearchedGames(gameData);

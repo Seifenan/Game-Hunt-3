@@ -5,7 +5,7 @@ const Main = () => {
   return (
 
     <Container>
-      <Jumbotron fluid className='text-dark'>
+      <Jumbotron fluid="true" className='text-dark'>
         <CardGroup>
           <Card style={{ margin: '2%', justifyContent: 'space-between' }}>
             <Card.Img src='https://www.hollywoodreporter.com/wp-content/uploads/2017/11/super-mario-game_copy_-_h_2017.jpg' />

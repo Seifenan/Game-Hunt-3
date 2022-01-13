@@ -5,14 +5,14 @@ import { Jumbotron, Container, Card, CardGroup } from 'react-bootstrap';
 
 const Footer = () => {
   return (
-    <Jumbotron fluid className='text-light bg-dark'>
+    <Jumbotron fluid="true" className='text-light bg-dark'>
       <Container style={{ textAlign: 'center'}}>
         <h5>Thank you for Visiting our site!</h5>
         <br></br>
         <p>Developed by</p>
         <CardGroup >
           
-          <Card border='dark' fluid className='text-light bg-dark' style={{ alignItems: 'center' }}>
+          <Card border='dark' fluid="true" className='text-light bg-dark' style={{ alignItems: 'center' }}>
             <Card.Img style={{ width: '10%', borderRadius: '50%' }} src='https://ca.slack-edge.com/T027T98NZ1V-U029A5TB62Y-3fa9af47fb02-512' />
             <Card.Text>Nasir Ahmed</Card.Text>
             {/* Replace all links with Icons!! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
@@ -23,7 +23,7 @@ const Footer = () => {
             {/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */}
           </Card>
 
-          <Card border='dark' fluid className='text-light bg-dark' style={{ alignItems: 'center' }}>
+          <Card border='dark' fluid="true" className='text-light bg-dark' style={{ alignItems: 'center' }}>
             <Card.Img style={{ width: '10%', borderRadius: '50%' }} src='https://avatars.githubusercontent.com/u/88166254?v=4' />
             <Card.Text>Seif Enan</Card.Text>
 
@@ -35,7 +35,7 @@ const Footer = () => {
             {/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */}
           </Card>
 
-          <Card border='dark' fluid className='text-light bg-dark' style={{ alignItems: 'center' }}>
+          <Card border='dark' fluid="true" className='text-light bg-dark' style={{ alignItems: 'center' }}>
             <Card.Img style={{ width: '10%', borderRadius: '50%' }} src='https://avatars.githubusercontent.com/u/60494706?v=4' />
             <Card.Text>Amina Kurdi</Card.Text>
             {/* Replace all links with Icons!! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}

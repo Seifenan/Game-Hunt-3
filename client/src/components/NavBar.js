@@ -14,7 +14,7 @@ const NavBar = () => {
   return (
     <>
       <Navbar bg='dark' variant='dark' expand='lg'>
-        <Container fluid>
+        <Container fluid="true">
           <Navbar.Brand as={Link} to='/'>
             Game Hunt
           </Navbar.Brand>

@@ -44,10 +44,15 @@ const Homepage = () => {
 
       const { items } = await response.json();
 
+      console.log(items)
+
+      console.log(response)
+
+
       const gameData = items.map((game) => ({
-        gameId: game.results.slug,
-        title: game.results.name,
-        image: game.results.background_image || ['No Background Image']
+        gameId: game.results.slug
+        // title: game.results.name,
+        // image: game.results.background_image || ['No Background Image']
         // releaseDate: game.results.released,
         // esrbRating: game.results.esrb_rating.name || ['No Rating Available'],
       }));
@@ -58,6 +63,8 @@ const Homepage = () => {
       console.error(err);
     }
   };
+
+  
 
   // create function to handle saving a game to our database
   const handleSaveGame = async (gameId) => {
@@ -85,7 +92,7 @@ const Homepage = () => {
 
   return (
     <>
-      <Jumbotron fluid className='text-light bg-primary' style={{ textAlign: 'center' }}>
+      <Jumbotron fluid="true" className='text-light bg-primary' style={{ textAlign: 'center' }}>
         <Container>
           <h1>Search for Games!</h1>
           <Form onSubmit={handleFormSubmit}>

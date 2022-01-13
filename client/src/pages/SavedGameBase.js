@@ -1,6 +1,7 @@
 import React from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
 
+// import { getMe, deleteGame } from '../utils/API';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_ME } from '../utils/queries';
@@ -42,19 +43,19 @@ const SavedGames = () => {
 
   return (
     <>
-      <Jumbotron fluid className='text-light bg-primary' style={{ textAlign: 'center' }}>
+      <Jumbotron fluid className='text-light bg-dark'>
         <Container>
-          <h1>Viewing {userData.username}'s saved games!</h1>
+          <h1>Viewing saved games!</h1>
         </Container>
       </Jumbotron>
       <Container>
-        {/* <h2>
+        <h2>
           {userData.savedGames.length
             ? `Viewing ${userData.savedGames.length} saved ${userData.savedGames.length === 1 ? 'game' : 'games'}:`
             : 'You have no saved games!'}
-        </h2> */}
+        </h2>
         <CardColumns>
-          {/* {userData.savedGames.map((game) => {
+          {userData.savedGames.map((game) => {
             return (
               <Card key={game.gameId} border='dark'>
                 {game.image ? <Card.Img src={game.image} alt={`The cover for ${game.title}`} variant='top' /> : null}
@@ -68,7 +69,7 @@ const SavedGames = () => {
                 </Card.Body>
               </Card>
             );
-          })} */}
+          })}
         </CardColumns>
       </Container>
     </>

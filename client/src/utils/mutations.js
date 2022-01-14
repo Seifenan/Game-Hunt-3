@@ -23,6 +23,14 @@ export const ADD_USER = gql`
   }
 `;
 
+// >>>> ADD UPDATE USER MUTATION!!!!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+// export const UPDATE_USER = gql`
+  
+// `;
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 export const SAVE_GAME = gql`
   mutation saveGame($input: savedGame!) {
     saveGame(input: $input) {
@@ -32,12 +40,10 @@ export const SAVE_GAME = gql`
       gameCount
       savedGames {
         # _id
-        authors
-        description
         title
-        gameId
         image
-        link
+        releaseDate
+        rating
       }
     }
   }
@@ -52,12 +58,10 @@ export const REMOVE_GAME = gql`
       gameCount
       savedGames {
         # _id
-        authors
-        description
         title
-        gameId
         image
-        link
+        releaseDate
+        rating
       }
     }
   }

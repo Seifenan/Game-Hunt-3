@@ -42,14 +42,18 @@ const Homepage = () => {
         throw new Error('something went wrong!');
       }
 
-      const { items } = await response.json();
+      const items = await response.json();
+      
 
-      const gameData = items.map((game) => ({
-        gameId: game.id,
-        authors: game.volumeInfo.authors || ['No author to display'],
-        title: game.volumeInfo.title,
-        description: game.volumeInfo.description,
-        image: game.volumeInfo.imageLinks?.thumbnail || '',
+      console.log(response);
+
+
+      const gameData = items.results.map((game) => ({
+        gameId: game.slug,
+        title: game.name,
+        image: game.background_image || ['No Background Image'],
+        releaseDate: game.released,
+        rating: game.rating || ['N/A'],
       }));
 
       setSearchedGames(gameData);
@@ -59,6 +63,7 @@ const Homepage = () => {
     }
   };
 
+  
   // create function to handle saving a game to our database
   const handleSaveGame = async (gameId) => {
     // find the game in `searchedGames` state by the matching id
@@ -113,7 +118,7 @@ const Homepage = () => {
         <h4 style={{ textAlign: 'center', paddingBottom: '2%' }}>
           {searchedGames.length
             ? `Viewing ${searchedGames.length} results:`
-            : "Search for a specific game or choose from today's most popular or from Developer's choice!"}
+            : "Search for a specific game or choose from the developer's top choices!"}
         </h4>
         <CardColumns>
           {searchedGames.map((game) => {
@@ -124,16 +129,16 @@ const Homepage = () => {
                 ) : null}
                 <Card.Body>
                   <Card.Title>{game.title}</Card.Title>
-                  <p className='small'>Authors: {game.authors}</p>
-                  <Card.Text>{game.description}</Card.Text>
+                  <p className='small'>Release Date: {game.releaseDate}</p>
+                  <Card.Text>Rating: {game.rating}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
                       disabled={savedGameIds?.some((savedGameId) => savedGameId === game.gameId)}
-                      className='btn-block btn-info'
+                      className='btn-block'
                       onClick={() => handleSaveGame(game.gameId)}>
                       {savedGameIds?.some((savedGameId) => savedGameId === game.gameId)
                         ? 'This game has already been saved!'
-                        : 'Save this Game!'}
+                        : 'Add to Saved Games!'}
                     </Button>
                   )}
                 </Card.Body>

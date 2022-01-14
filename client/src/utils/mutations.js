@@ -23,6 +23,14 @@ export const ADD_USER = gql`
   }
 `;
 
+// >>>> ADD UPDATE USER MUTATION!!!!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+// export const UPDATE_USER = gql`
+  
+// `;
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 export const SAVE_GAME = gql`
   mutation saveGame($input: savedGame!) {
     saveGame(input: $input) {

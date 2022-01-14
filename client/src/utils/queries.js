@@ -8,22 +8,16 @@ export const GET_ME = gql`
       email
       gameCount
       savedGames {
-        authors
-        description
         title
-        gameId
         image
-        link
+        releaseDate
+        rating
       }
     }
   }
 `;
 
-//  # _id
-// title
-// image
-// releaseDate
-// rating
+
 
 
 

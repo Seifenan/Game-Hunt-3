@@ -19,9 +19,9 @@ const Main = () => {
           </Card>
 
           <Card style={{ margin: '2%', justifyContent: 'space-between' }}>
-            <Card.Img src='http://res.heraldm.com/content/image/2021/07/04/20210704000124_0.jpg' />
-            <Card.Title style={{ textAlign: 'center' }}>Minecraft</Card.Title>
-            <Card.Text style={{ padding: '5%' }}>Minecraft is a sandbox video game developed by the Swedish video game developer Mojang Studios.</Card.Text>
+            <Card.Img src='https://wallpaperaccess.com/full/2800273.jpg' />
+            <Card.Title style={{ textAlign: 'center' }}>Grand Theft Auto V</Card.Title>
+            <Card.Text style={{ padding: '5%' }}>an action-adventure game played from either a third-person or first-person perspective. Players complete missions—linear scenarios with set objectives—to progress through the story. Outside of the missions, players may freely roam the open world.</Card.Text>
             <Card.Footer style={{ textAlign: 'center' }}>
               {/* >>>>>>>>>>>>>> Edit button to save game ID to Saved Games!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
               <Button>Add to Saved Games</Button>

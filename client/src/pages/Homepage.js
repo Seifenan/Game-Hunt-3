@@ -53,7 +53,7 @@ const Homepage = () => {
         title: game.name,
         image: game.background_image || ['No Background Image'],
         releaseDate: game.released,
-        esrbRating: game.esrb_rating && game.esrb_rating.name,
+        rating: game.rating || ['N/A'],
       }));
 
       setSearchedGames(gameData);
@@ -129,16 +129,16 @@ const Homepage = () => {
                 ) : null}
                 <Card.Body>
                   <Card.Title>{game.title}</Card.Title>
-                  <p className='small'>Authors: {game.authors}</p>
-                  <Card.Text>{game.description}</Card.Text>
+                  <p className='small'>Release Date: {game.releaseDate}</p>
+                  <Card.Text>Rating: {game.rating}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
                       disabled={savedGameIds?.some((savedGameId) => savedGameId === game.gameId)}
-                      className='btn-block btn-info'
+                      className='btn-block'
                       onClick={() => handleSaveGame(game.gameId)}>
                       {savedGameIds?.some((savedGameId) => savedGameId === game.gameId)
                         ? 'This game has already been saved!'
-                        : 'Save this Game!'}
+                        : 'Add to Saved Games!'}
                     </Button>
                   )}
                 </Card.Body>

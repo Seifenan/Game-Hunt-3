@@ -19,6 +19,11 @@ export const GET_ME = gql`
   }
 `;
 
+//  # _id
+// title
+// image
+// releaseDate
+// rating
 
 
 

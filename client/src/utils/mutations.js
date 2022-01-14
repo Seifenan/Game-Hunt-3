@@ -32,12 +32,10 @@ export const SAVE_GAME = gql`
       gameCount
       savedGames {
         # _id
-        authors
-        description
         title
-        gameId
         image
-        link
+        releaseDate
+        rating
       }
     }
   }
@@ -52,12 +50,10 @@ export const REMOVE_GAME = gql`
       gameCount
       savedGames {
         # _id
-        authors
-        description
         title
-        gameId
         image
-        link
+        releaseDate
+        rating
       }
     }
   }

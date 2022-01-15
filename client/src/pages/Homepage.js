@@ -125,25 +125,26 @@ const Homepage = () => {
         <CardColumns>
           {searchedGames.map((game) => {
             return (
-              <Card key={game.gameId} border='dark'>
+              <Card key={game.gameId}>
                 {game.image ? (
                   <Card.Img src={game.image} alt={`The cover for ${game.title}`} variant='top' />
                 ) : null}
                 <Card.Body>
                   <Card.Title>{game.title}</Card.Title>
-                  <p className='small'>Release Date: {game.releaseDate}</p>
-                  <Card.Text>Rating: {game.rating}</Card.Text>
-                  {Auth.loggedIn() && (
+                  <p>Release Date: {game.releaseDate}</p>
+                  <p>Rating: {game.rating}</p>
+                </Card.Body>
+                {Auth.loggedIn() && (
+                  <Card.Footer style={{ textAlign: 'center' }}>
                     <Button
                       disabled={savedGameIds?.some((savedGameId) => savedGameId === game.gameId)}
-                      className='btn-block'
                       onClick={() => handleSaveGame(game.gameId)}>
                       {savedGameIds?.some((savedGameId) => savedGameId === game.gameId)
                         ? 'This game has been saved!'
                         : 'Add to Saved Games!'}
                     </Button>
-                  )}
-                </Card.Body>
+                  </Card.Footer>
+                )}
               </Card>
             );
           })}

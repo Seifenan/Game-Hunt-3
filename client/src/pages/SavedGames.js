@@ -19,7 +19,6 @@ const SavedGames = () => {
   // create function that accepts the game's mongo _id value as param and deletes the game from the database
   const handleDeleteGame = async (gameId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
-    console.log(gameId)
 
     if (!token) {
       return false;
@@ -50,14 +49,13 @@ const SavedGames = () => {
       </Jumbotron>
       <Container>
         <h2>
-          {/* {console.log(userData.savedGames)} */}
+          {console.log(userData.savedGames)}
           {userData.savedGames.length
             ? `Viewing ${userData.savedGames.length} saved ${userData.savedGames.length === 1 ? 'game' : 'games'}:`
             : 'You have no saved games!'}
         </h2>
         <CardColumns>
           {userData.savedGames.map((game) => {
-             console.log(game) 
 
             return (
               <Card key={game.gameId} border='dark'>

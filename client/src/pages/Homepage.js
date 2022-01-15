@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
-import { searchGames } from '../utils/API';
 import { saveGameIds, getSavedGameIds } from '../utils/localStorage';
 
 import { useMutation } from '@apollo/client';
 import { SAVE_GAME } from '../utils/mutations';
 import Main from '../components/Main';
+
+// import { API_KEY } from '../../'
 
 const Homepage = () => {
   // create state for holding returned google api data
@@ -36,27 +37,26 @@ const Homepage = () => {
     }
 
     try {
-      const response = await searchGames(searchInput);
+      // Hide KEY! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      const response = await fetch(
+        `https://api.rawg.io/api/games?search=${searchInput}&key=65f84827e818425688a7edfcb6ab1f5f`
+      );
 
       if (!response.ok) {
         throw new Error('something went wrong!');
       }
 
       const items = await response.json();
-      
-
-      // console.log(response);
-
 
       const gameData = items.results.map((game) => (
 
         {
-        gameId: game.slug,
-        title: game.name,
-        image: game.background_image || 'https://www.spearsandcorealestate.com/wp-content/themes/spears/images/no-image.png',
-        releaseDate: game.released || 'N/A',
-        rating: game.rating ? game.rating.toString() : 'N/A',
-      }));
+          gameId: game.slug,
+          title: game.name,
+          image: game.background_image || 'https://www.spearsandcorealestate.com/wp-content/themes/spears/images/no-image.png',
+          releaseDate: game.released || 'N/A',
+          rating: game.rating ? game.rating.toString() : 'N/A',
+        }));
 
       setSearchedGames(gameData);
       setSearchInput('');
@@ -65,13 +65,11 @@ const Homepage = () => {
     }
   };
 
-  
+
   // create function to handle saving a game to our database
   const handleSaveGame = async (gameId) => {
     // find the game in `searchedGames` state by the matching id
     const gameToSave = searchedGames.find((game) => game.gameId === gameId);
-
-    console.log(gameToSave)
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;

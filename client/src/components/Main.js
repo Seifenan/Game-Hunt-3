@@ -1,9 +1,10 @@
 import React from 'react';
 import { Jumbotron, Container, Button, Card, CardGroup } from 'react-bootstrap';
 
+// const Main = ({ handleSaveGame }) => {
 const Main = () => {
   return (
-
+    
     <Container>
       <Jumbotron fluid="true" className='text-dark'>
         <CardGroup>
@@ -13,6 +14,7 @@ const Main = () => {
             <Card.Text style={{ padding: '5%' }}>Mario must race through the Mushroom Kingdom and save Princess Toadstool (later Princess Peach) from Bowser. Mario jumps, runs, and walks across each level. The worlds are full of enemies and platforms, and open holes.</Card.Text>
             <Card.Footer style={{ textAlign: 'center' }}>
               {/* >>>>>>>>>>>>>> Edit button to save game ID to Saved Games!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
+              {/* <Button onClick={handleSaveGame({})}>Add to Saved Games</Button> */}
               <Button>Add to Saved Games</Button>
               {/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                 */}
             </Card.Footer>

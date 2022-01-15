@@ -39,7 +39,7 @@ export const SAVE_GAME = gql`
       email
       gameCount
       savedGames {
-        # _id
+        gameId
         title
         image
         releaseDate
@@ -57,7 +57,7 @@ export const REMOVE_GAME = gql`
       email
       gameCount
       savedGames {
-        # _id
+        gameId
         title
         image
         releaseDate

@@ -5,6 +5,8 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
+      console.log('User')
+
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
@@ -41,6 +43,7 @@ const resolvers = {
       return { token, user };
     },
     saveGame: async (parent, args, context) => {
+      console.log('saveGame')
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
@@ -54,6 +57,8 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     removeGame: async (parent, args, context) => {
+      console.log('removeGame')
+
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },

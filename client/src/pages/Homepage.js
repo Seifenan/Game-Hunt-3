@@ -45,15 +45,17 @@ const Homepage = () => {
       const items = await response.json();
       
 
-      console.log(response);
+      // console.log(response);
 
 
-      const gameData = items.results.map((game) => ({
+      const gameData = items.results.map((game) => (
+
+        {
         gameId: game.slug,
         title: game.name,
-        image: game.background_image || ['No Background Image'],
-        releaseDate: game.released,
-        rating: game.rating || ['N/A'],
+        image: game.background_image || 'https://www.spearsandcorealestate.com/wp-content/themes/spears/images/no-image.png',
+        releaseDate: game.released || 'N/A',
+        rating: game.rating ? game.rating.toString() : 'N/A',
       }));
 
       setSearchedGames(gameData);
@@ -68,6 +70,8 @@ const Homepage = () => {
   const handleSaveGame = async (gameId) => {
     // find the game in `searchedGames` state by the matching id
     const gameToSave = searchedGames.find((game) => game.gameId === gameId);
+
+    console.log(gameToSave)
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -137,7 +141,7 @@ const Homepage = () => {
                       className='btn-block'
                       onClick={() => handleSaveGame(game.gameId)}>
                       {savedGameIds?.some((savedGameId) => savedGameId === game.gameId)
-                        ? 'This game has already been saved!'
+                        ? 'This game has been saved!'
                         : 'Add to Saved Games!'}
                     </Button>
                   )}
@@ -147,7 +151,9 @@ const Homepage = () => {
           })}
         </CardColumns>
       </Container>
-      <Main />
+      <Main 
+      handleSaveGame={handleSaveGame}
+      />
     </>
   );
 };

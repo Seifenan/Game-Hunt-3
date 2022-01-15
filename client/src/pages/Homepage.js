@@ -151,9 +151,10 @@ const Homepage = () => {
           })}
         </CardColumns>
       </Container>
-      <Main 
+      <Main />
+      {/* <Main 
       handleSaveGame={handleSaveGame}
-      />
+      /> */}
     </>
   );
 };

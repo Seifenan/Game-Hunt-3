@@ -141,7 +141,7 @@ const Homepage = () => {
                       onClick={() => handleSaveGame(game.gameId)}>
                       {savedGameIds?.some((savedGameId) => savedGameId === game.gameId)
                         ? 'This game has been saved!'
-                        : 'Add to Saved Games!'}
+                        : 'Save Game!'}
                     </Button>
                   </Card.Footer>
                 )}

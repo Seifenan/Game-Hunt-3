@@ -83,7 +83,6 @@ const SavedGames = () => {
               </Card>
             );
           })}
-        
         </CardColumns>
         <h2 style={{ textAlign: 'center' }}>
           {/* {console.log(userData.savedGames)} */}

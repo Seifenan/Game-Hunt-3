@@ -25,9 +25,16 @@ export const ADD_USER = gql`
 
 // >>>> ADD UPDATE USER MUTATION!!!!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-// export const UPDATE_USER = gql`
-  
-// `;
+export const UPDATE_USER = gql`
+mutation updateUser($username: String!) {
+  updateUser(username: $username) {
+    token
+    user {
+      _id
+    }
+  }
+}
+`;
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 

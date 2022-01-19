@@ -30,10 +30,15 @@ const resolvers = {
     updateUser: async (parent, {_id, username}) => {
       const user = await User.findOneAndUpdate(
         { _id },
-        { $set: username }
+        { $set: { username } },
+        {
+          runValidators: true,
+          new: true
+        }
       );
+      console.log( user );
 
-      return { _id, username };
+      return user;
     },
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 

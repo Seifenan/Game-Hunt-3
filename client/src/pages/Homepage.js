@@ -8,8 +8,6 @@ import { useMutation } from '@apollo/client';
 import { SAVE_GAME } from '../utils/mutations';
 import Main from '../components/Main';
 
-require('dotenv').config();
-
 // import { API_KEY } from '../../'
 
 const Homepage = () => {
@@ -41,7 +39,7 @@ const Homepage = () => {
     try {
       // Hide KEY! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
       const response = await fetch(
-        `https://api.rawg.io/api/games?search=${searchInput}&key=${process.env.API_KEY}`
+        `https://api.rawg.io/api/games?search=${searchInput}&key=65f84827e818425688a7edfcb6ab1f5f`
       );
 
       if (!response.ok) {

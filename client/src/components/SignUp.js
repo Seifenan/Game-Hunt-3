@@ -8,7 +8,7 @@ import { ADD_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
-const SignupForm = () => {
+const SignupForm = ({ onSubmit }) => {
   // set initial form state
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
   // set state for form validation
@@ -24,7 +24,7 @@ const SignupForm = () => {
     setUserFormData({ ...userFormData, [name]: value });
   };
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
 
     // check if form has everything (as per react-bootstrap docs)
@@ -34,22 +34,25 @@ const SignupForm = () => {
       event.stopPropagation();
     }
 
-    try {
-      const { data } = await addUser({
+      const { data } = addUser({
         variables: { ...userFormData },
-      });
+      }).then(({ data }) => {
+
 
       Auth.login(data.addUser.token);
-    } catch (err) {
+
+      }).catch((err) => {
       console.error(err);
       setShowAlert(true);
-    }
+    });
 
     setUserFormData({
       username: '',
       email: '',
       password: '',
     });
+
+    onSubmit();
   };
 
   return (

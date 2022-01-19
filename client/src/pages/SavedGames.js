@@ -8,18 +8,20 @@ import Profile from '../components/Profile';
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
-import { useQuery, useMutation } from '@apollo/client';
-import { GET_ME } from '../utils/queries';
+import { useMutation } from '@apollo/client';
 import { REMOVE_GAME } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 import { removeGameId } from '../utils/localStorage';
 
+import { useStoreContext } from '../utils/GlobalState';
+
 const SavedGames = () => {
   const [removeGame] = useMutation(REMOVE_GAME);
-  const { loading, data } = useQuery(GET_ME);
 
-  const userData = data?.me || [];
+  const [state] = useStoreContext();
+
+  const userData = state.user;
 
   const [showModal, setShowModal] = useState(false);
 
@@ -41,11 +43,6 @@ const SavedGames = () => {
       console.error(err);
     }
   };
-
-  // if data isn't here yet, say so
-  if (loading) {
-    return <h2>LOADING...</h2>;
-  }
 
 
 

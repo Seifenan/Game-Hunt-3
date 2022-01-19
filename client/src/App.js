@@ -1,10 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import NavBar from './components/NavBar';
+import { StoreProvider } from './utils/GlobalState';
 
-import Homepage from './pages/Homepage';
-import SavedGames from './pages/SavedGames';
+import Router from './pages';
 
 import {
   ApolloClient,
@@ -16,7 +14,6 @@ import { setContext } from '@apollo/client/link/context';
 
 
 import './App.css';
-import Footer from './components/Footer';
 
 
 const httpLink = createHttpLink({
@@ -41,17 +38,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <>
-          <NavBar />
-          <Switch>
-            <Route exact path='/' component={Homepage} />
-            <Route exact path='/saved' component={SavedGames} />
-            <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
-          </Switch>
-          <Footer />
-        </>
-      </Router>
+      <StoreProvider>
+        <Router />
+      </StoreProvider>
     </ApolloProvider>
   );
 }

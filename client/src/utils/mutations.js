@@ -25,9 +25,16 @@ export const ADD_USER = gql`
 
 // >>>> ADD UPDATE USER MUTATION!!!!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-// export const UPDATE_USER = gql`
-  
-// `;
+export const UPDATE_USER = gql`
+mutation updateUser($username: String!) {
+  updateUser(username: $username) {
+    token
+    user {
+      _id
+    }
+  }
+}
+`;
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -39,7 +46,7 @@ export const SAVE_GAME = gql`
       email
       gameCount
       savedGames {
-        # _id
+        gameId
         title
         image
         releaseDate
@@ -57,7 +64,7 @@ export const REMOVE_GAME = gql`
       email
       gameCount
       savedGames {
-        # _id
+        gameId
         title
         image
         releaseDate

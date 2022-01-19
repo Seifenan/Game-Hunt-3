@@ -1,5 +1,11 @@
-import React from 'react';
-import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Jumbotron, Container, CardColumns, Card, Button, Row, Col, CardGroup, Modal } from 'react-bootstrap';
+
+import { FiSettings } from 'react-icons/fi';
+
+// Remove!!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+import Profile from '../components/Profile';
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 import { useQuery, useMutation } from '@apollo/client';
@@ -15,6 +21,7 @@ const SavedGames = () => {
 
   const userData = data?.me || [];
 
+  const [showModal, setShowModal] = useState(false);
 
   // create function that accepts the game's mongo _id value as param and deletes the game from the database
   const handleDeleteGame = async (gameId) => {
@@ -40,37 +47,83 @@ const SavedGames = () => {
     return <h2>LOADING...</h2>;
   }
 
+
+
+
+
   return (
     <>
-      <Jumbotron fluid="true" className='text-light bg-primary' style={{ textAlign: 'center' }}>
+      <Jumbotron fluid className='text-light bg-primary'>
         <Container>
-          <h1>Viewing {userData.username}'s saved games!</h1>
+          <Row className="align-items-center">
+            <Col xs='3' lg="2" >
+              <Card.Img style={{ borderRadius: '50%' }} src='https://avatarfiles.alphacoders.com/978/97856.gif' />
+            </Col>
+            <Col>
+              <h2>Hello, {userData.username}!</h2>
+              <FiSettings onClick={() => setShowModal(true)} />        
+            </Col>
+          </Row>
+          <br></br>
+          <h3>
+            {userData.savedGames.length
+              ? `You have ${userData.savedGames.length} Saved ${userData.savedGames.length === 1 ? 'Game' : 'Games'}`
+              : 'You have no Saved Games!'}
+          </h3>
+          <p>Email: {userData.email}</p>
         </Container>
       </Jumbotron>
+
+      <Modal
+        size='xl'
+        show={showModal}
+        onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Welcome {userData.username}</Modal.Title>
+          <Profile handleModalClose={() => setShowModal(false)} />
+        </Modal.Header>
+      </Modal>
+
+
+
+
       <Container>
-        <h2>
-          {userData.savedGames.length
-            ? `Viewing ${userData.savedGames.length} saved ${userData.savedGames.length === 1 ? 'game' : 'games'}:`
-            : 'You have no saved games!'}
-        </h2>
         <CardColumns>
           {userData.savedGames.map((game) => {
             return (
-              <Card key={game.gameId} border='dark'>
+              <Card key={game.gameId}>
                 {game.image ? <Card.Img src={game.image} alt={`The cover for ${game.title}`} variant='top' /> : null}
                 <Card.Body>
                   <Card.Title>{game.title}</Card.Title>
-                  <p className='small'>Authors: {game.releaseDate}</p>
-                  <Card.Text>{game.rating}</Card.Text>
-                  <Button className='btn-block btn-danger' onClick={() => handleDeleteGame(game.gameId)}>
+                  <p>Release Date: {game.releaseDate}</p>
+                  <p>Rating: {game.rating}</p>
+                </Card.Body>
+                <Card.Footer style={{ textAlign: 'center' }}>
+                  <Button
+                    className='btn-danger'
+                    onClick={() => handleDeleteGame(game.gameId)}>
                     Delete this Game!
                   </Button>
-                </Card.Body>
+                </Card.Footer>
               </Card>
             );
           })}
         </CardColumns>
+        <h2 style={{ textAlign: 'center' }}>
+          {/* {console.log(userData.savedGames)} */}
+          {userData.savedGames.length
+            ? `Saved Count: ${userData.savedGames.length} ${userData.savedGames.length === 1 ? 'Game' : 'Games'}`
+            : 'No Saved Games to Display'}
+        </h2>
       </Container>
+      <br></br>
+      <Card.Footer>
+        <CardGroup className="justify-content-between">
+          <p>Username: {userData.username}</p>
+          <p>Email: {userData.email}</p>
+          <p>Unique User ID: {userData._id}</p>
+        </CardGroup>
+      </Card.Footer>
     </>
   );
 };

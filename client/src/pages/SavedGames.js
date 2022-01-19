@@ -1,20 +1,29 @@
-import React from 'react';
-import { Jumbotron, Container, CardColumns, Card, Button, Row, Col, CardGroup } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Jumbotron, Container, CardColumns, Card, Button, Row, Col, CardGroup, Modal } from 'react-bootstrap';
+
+import { FiSettings } from 'react-icons/fi';
+
+// Remove!!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+import Profile from '../components/Profile';
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
-import { useQuery, useMutation } from '@apollo/client';
-import { GET_ME } from '../utils/queries';
+import { useMutation } from '@apollo/client';
 import { REMOVE_GAME } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 import { removeGameId } from '../utils/localStorage';
 
+import { useStoreContext } from '../utils/GlobalState';
+
 const SavedGames = () => {
   const [removeGame] = useMutation(REMOVE_GAME);
-  const { loading, data } = useQuery(GET_ME);
 
-  const userData = data?.me || [];
+  const [state] = useStoreContext();
 
+  const userData = state.user;
+
+  const [showModal, setShowModal] = useState(false);
 
   // create function that accepts the game's mongo _id value as param and deletes the game from the database
   const handleDeleteGame = async (gameId) => {
@@ -35,21 +44,21 @@ const SavedGames = () => {
     }
   };
 
-  // if data isn't here yet, say so
-  if (loading) {
-    return <h2>LOADING...</h2>;
-  }
-  // https://avatarfiles.alphacoders.com/978/97856.gif
+
+
+
+
   return (
     <>
       <Jumbotron fluid className='text-light bg-primary'>
         <Container>
           <Row className="align-items-center">
             <Col xs='3' lg="2" >
-              <Card.Img style={{ borderRadius: '50%' }} src='https://avatarfiles.alphacoders.com/978/97856.gif' /> 
+              <Card.Img style={{ borderRadius: '50%' }} src='https://avatarfiles.alphacoders.com/978/97856.gif' />
             </Col>
             <Col>
               <h2>Hello, {userData.username}!</h2>
+              <FiSettings onClick={() => setShowModal(true)} />        
             </Col>
           </Row>
           <br></br>
@@ -58,13 +67,26 @@ const SavedGames = () => {
               ? `You have ${userData.savedGames.length} Saved ${userData.savedGames.length === 1 ? 'Game' : 'Games'}`
               : 'You have no Saved Games!'}
           </h3>
-          <p>Email: {userData.email}</p>      
+          <p>Email: {userData.email}</p>
         </Container>
       </Jumbotron>
+
+      <Modal
+        size='xl'
+        show={showModal}
+        onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Welcome {userData.username}</Modal.Title>
+          <Profile handleModalClose={() => setShowModal(false)} />
+        </Modal.Header>
+      </Modal>
+
+
+
+
       <Container>
         <CardColumns>
           {userData.savedGames.map((game) => {
-
             return (
               <Card key={game.gameId}>
                 {game.image ? <Card.Img src={game.image} alt={`The cover for ${game.title}`} variant='top' /> : null}
@@ -83,7 +105,6 @@ const SavedGames = () => {
               </Card>
             );
           })}
-        
         </CardColumns>
         <h2 style={{ textAlign: 'center' }}>
           {/* {console.log(userData.savedGames)} */}

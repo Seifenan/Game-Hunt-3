@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
@@ -7,9 +7,17 @@ import SignUp from './SignUp';
 import LogIn from './LogIn';
 
 import Auth from '../utils/auth';
+import { useStoreContext } from '../utils/GlobalState';
+import { UPDATE_USER} from '../utils/actions';
 
 const NavBar = () => {
   const [showModal, setShowModal] = useState(false);
+  const [state,dispatch] = useStoreContext()
+
+  const handleLogout = () => {
+    Auth.logout();
+    dispatch({ type: UPDATE_USER, user: null});
+  }
 
   return (
     <>
@@ -25,12 +33,12 @@ const NavBar = () => {
                 Search For Games
               </Nav.Link>
               {/* if user is logged in show saved games and logout */}
-              {Auth.loggedIn() ? (
+              {state.user ? (
                 <>
                   <Nav.Link as={Link} to='/saved'>
                     See Your Games
                   </Nav.Link>
-                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                  <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                 </>
               ) : (
                 <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
@@ -62,10 +70,10 @@ const NavBar = () => {
           <Modal.Body>
             <Tab.Content>
               <Tab.Pane eventKey='login'>
-                <LogIn handleModalClose={() => setShowModal(false)} />
+                <LogIn handleModalClose={() => setShowModal(false)} onSubmit={() => setShowModal(false)}/>
               </Tab.Pane>
               <Tab.Pane eventKey='signup'>
-                <SignUp handleModalClose={() => setShowModal(false)} />
+                <SignUp handleModalClose={() => setShowModal(false)} onSubmit={() => setShowModal(false)}/>
               </Tab.Pane>
             </Tab.Content>
           </Modal.Body>

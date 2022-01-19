@@ -31,6 +31,7 @@ mutation updateUser($username: String!) {
     token
     user {
       _id
+      username
     }
   }
 }

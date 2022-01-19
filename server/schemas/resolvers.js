@@ -25,6 +25,18 @@ const resolvers = {
 
       return { token, user };
     },
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    updateUser: async (parent, {_id, username}) => {
+      const user = await User.findOneAndUpdate(
+        { _id },
+        { $set: username }
+      );
+
+      return { _id, username };
+    },
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 

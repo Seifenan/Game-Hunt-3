@@ -36,7 +36,6 @@ const resolvers = {
           new: true
         }
       );
-      console.log( user );
 
       return user;
     },

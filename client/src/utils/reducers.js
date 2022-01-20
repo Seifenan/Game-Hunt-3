@@ -4,7 +4,6 @@ import { UPDATE_USER } from './actions';
 export const reducer = (state, action) => {
   switch (action.type) {
     case UPDATE_USER:
-      console.log(action)
       return {
         ...state,
         user: action.user,

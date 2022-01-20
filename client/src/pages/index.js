@@ -19,7 +19,6 @@ const Router = () => {
 
   useEffect (() => {
     (async () => {
-      console.log('test')
       if (Auth.loggedIn()) {
         dispatch({ type: UPDATE_USER, user: data?.me })
       }

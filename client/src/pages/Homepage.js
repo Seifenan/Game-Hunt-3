@@ -39,7 +39,7 @@ const Homepage = () => {
     try {
       // Hide KEY! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
       const response = await fetch(
-        `https://api.rawg.io/api/games?search=${searchInput}&key=65f84827e818425688a7edfcb6ab1f5f`
+        `https://api.rawg.io/api/games?search=${searchInput}&key=${process.env.REACT_APP_API_KEY}`
       );
 
       if (!response.ok) {

@@ -13,7 +13,7 @@ import Main from '../components/Main';
 
 const Homepage = () => {
   // create state for holding returned google api data
-  const [searchedGames, setSearchedGames] = useState([]);
+  //const [searchedGames, setSearchedGames] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
 
@@ -73,7 +73,7 @@ const Homepage = () => {
   // create function to handle saving a game to our database
   const handleSaveGame = async (gameId) => {
     // find the game in `searchedGames` state by the matching id
-    const gameToSave = searchedGames.find((game) => game.gameId === gameId);
+    const gameToSave = data.getGame.find((game) => game.gameId === gameId);
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -123,7 +123,7 @@ const Homepage = () => {
       <Container>
         <h4 style={{ textAlign: 'center', paddingBottom: '2%' }}>
           {data && data.getGame.length
-            ? `Viewing ${data.length} results:`
+            ? `Viewing ${data.getGame.length} results:`
             : "Search for a specific game or be inspired by the developer's choices!"}
         </h4>
         <CardColumns>

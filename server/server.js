@@ -25,6 +25,23 @@ const startServer = async () => {
 
 startServer()
 
+// const cleanTypeName = new ApolloLink((operation, forward) => {
+//   if (operation.variables) {
+//     const omitTypename = (key, value) => (key === '__typename' ? undefined : value);
+//     operation.variables = JSON.parse(JSON.stringify(operation.variables), omitTypename);
+//   }
+//   return forward(operation).map((data) => {
+//     return data;
+//   });
+// });
+
+// const httpLinkWithErrorHandling = ApolloLink.from([
+//   cleanTypeName,
+//   retry,
+//   error,
+//   http,
+// ]);
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 

@@ -8,7 +8,7 @@ import Homepage from './Homepage';
 import SavedGames from './SavedGames';
 
 import Auth from '../utils/auth';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { GET_ME } from '../utils/queries';
 import { useStoreContext } from '../utils/GlobalState';
 import { UPDATE_USER } from '../utils/actions';
@@ -25,6 +25,8 @@ const Router = () => {
       }
     })();
   }, [data]);
+
+   if (loading) return 'Loading...';
 
   return (
     <BrowserRouter>

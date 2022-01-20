@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import { Form, Button, Alert, Col, Row } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Form, Button } from 'react-bootstrap';
 
 // import { createUser } from '../utils/API';
 
@@ -14,7 +14,7 @@ const Profile = ({ handleModalClose }) => {
   const [userInput, setUserInput] = useState('');
   const [updateUser, { data, loading, error }] = useMutation(UPDATE_USER);
 
-  
+
   useEffect(() => {
     if (data) {
       console.log(data)
@@ -27,26 +27,17 @@ const Profile = ({ handleModalClose }) => {
   if (error) return `Submission error! ${error.message}`;
 
   return (
-    <>
-        <div>
-          <form
-            onSubmit={e => {
-              e.preventDefault();
-              updateUser({ variables: { id: state.user._id, username: userInput } });
-              handleModalClose();
-            }}
-          >
-            <input
-            onChange={(e) => setUserInput(e.target.value)}
-              // ref={node => {
-              //   input = node;
-              // }}
-            />
-            <button type="submit">Update Username</button>
-          </form>
-        </div>
-      
-    </>
+    <Form
+      onSubmit={e => {
+        e.preventDefault();
+        updateUser({ variables: { id: state.user._id, username: userInput } });
+        handleModalClose();
+      }}>
+      <Form.Group>
+      <Form.Control onChange={(e) => setUserInput(e.target.value)} />
+      </Form.Group>
+      <Button variant='primary' type='submit'>Update Username</Button>
+    </Form>
   );
 };
 

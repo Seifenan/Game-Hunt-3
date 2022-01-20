@@ -3,10 +3,7 @@ import { Jumbotron, Container, CardColumns, Card, Button, Row, Col, CardGroup, M
 
 import { FiSettings } from 'react-icons/fi';
 
-// Remove!!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 import Profile from '../components/Profile';
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
 
 import { useMutation } from '@apollo/client';
 import { REMOVE_GAME } from '../utils/mutations';
@@ -44,10 +41,6 @@ const SavedGames = () => {
     }
   };
 
-
-
-
-
   return (
     <>
       <Jumbotron fluid className='text-light bg-primary'>
@@ -58,7 +51,7 @@ const SavedGames = () => {
             </Col>
             <Col>
               <h2>Hello, {userData.username}!</h2>
-              <FiSettings onClick={() => setShowModal(true)} />        
+              <FiSettings onClick={() => setShowModal(true)} />
             </Col>
           </Row>
           <br></br>
@@ -67,22 +60,25 @@ const SavedGames = () => {
               ? `You have ${userData.savedGames.length} Saved ${userData.savedGames.length === 1 ? 'Game' : 'Games'}`
               : 'You have no Saved Games!'}
           </h3>
-          <p>Email: {userData.email}</p>
         </Container>
       </Jumbotron>
 
       <Modal
-        size='xl'
+        size='lg'
         show={showModal}
-        onHide={() => setShowModal(false)}>
+        onHide={() => setShowModal(false)}
+      >
         <Modal.Header closeButton>
-          <Modal.Title>Welcome {userData.username}</Modal.Title>
-          <Profile handleModalClose={() => setShowModal(false)} />
+          <Modal.Title >Welcome {userData.username}!</Modal.Title>
         </Modal.Header>
+        <Modal.Body style={{ textAlign: 'center' }}>
+          <Profile handleModalClose={() => setShowModal(false)} />
+        </Modal.Body>
+        <Modal.Footer style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <p>Email: {userData.email}</p>
+          <p>Unique User ID: {userData._id}</p>          
+        </Modal.Footer>
       </Modal>
-
-
-
 
       <Container>
         <CardColumns>

@@ -17,7 +17,7 @@ const LoginForm = ({ onSubmit }) => {
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [login, { error }] = useMutation(LOGIN_USER);
-  const [state, dispatch] = useStoreContext();
+  const [ dispatch] = useStoreContext();
 
 
   const handleInputChange = (event) => {
@@ -44,6 +44,7 @@ const LoginForm = ({ onSubmit }) => {
         console.error(err);
         setShowAlert(true);
      });
+
 
     setUserFormData({
       username: '',

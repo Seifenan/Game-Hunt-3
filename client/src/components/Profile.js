@@ -17,7 +17,7 @@ const Profile = ({ handleModalClose }) => {
 
   useEffect(() => {
     if (data) {
-      console.log(data)
+      //console.log(data)
       dispatch({ type: UPDATE_USER_TYPE, user: data.updateUser })
     }
   }, [data]);

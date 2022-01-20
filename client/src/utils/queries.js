@@ -18,6 +18,18 @@ export const GET_ME = gql`
   }
 `;
 
+export const GET_GAMES = gql`
+  query Query($searchInput: String!) {
+    getGame(searchInput: $searchInput) {
+      gameId
+      title
+      image
+      releaseDate
+      rating
+    }
+  }
+`;
+
 
 
 

@@ -4,8 +4,9 @@ import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'reac
 import Auth from '../utils/auth';
 import { saveGameIds, getSavedGameIds } from '../utils/localStorage';
 
-import { useMutation } from '@apollo/client';
+import { useMutation, useLazyQuery } from '@apollo/client';
 import { SAVE_GAME } from '../utils/mutations';
+import { GET_GAMES } from '../utils/queries';
 import Main from '../components/Main';
 
 // import { API_KEY } from '../../'
@@ -20,6 +21,7 @@ const Homepage = () => {
   const [savedGameIds, setSavedGameIds] = useState(getSavedGameIds());
 
   const [saveGame] = useMutation(SAVE_GAME);
+  const [getGames, { loading, error, data } ] = useLazyQuery(GET_GAMES);
 
 
   // set up useEffect hook to save `savedGameIds` list to localStorage on component unmount
@@ -38,27 +40,29 @@ const Homepage = () => {
 
     try {
       // Hide KEY! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-      const response = await fetch(
-        `https://api.rawg.io/api/games?search=${searchInput}&key=65f84827e818425688a7edfcb6ab1f5f`
-      );
+      // const response = await fetch(
+      //   //`https://api.rawg.io/api/games?search=${searchInput}&key=65f84827e818425688a7edfcb6ab1f5f`
+      //   `https://api.rawg.io/api/games?search=${searchInput}&key=${process.env.REACT_APP_API_KEY}`
+      // );
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+      // if (!response.ok) {
+      //   throw new Error('something went wrong!');
+      // }
 
-      const items = await response.json();
+      // const items = await response.json();
 
-      const gameData = items.results.map((game) => (
+      // const gameData = items.results.map((game) => (
 
-        {
-          gameId: game.slug,
-          title: game.name,
-          image: game.background_image || 'https://www.spearsandcorealestate.com/wp-content/themes/spears/images/no-image.png',
-          releaseDate: game.released || 'N/A',
-          rating: game.rating ? game.rating.toString() : 'N/A',
-        }));
+      //   {
+      //     gameId: game.slug,
+      //     title: game.name,
+      //     image: game.background_image || 'https://www.spearsandcorealestate.com/wp-content/themes/spears/images/no-image.png',
+      //     releaseDate: game.released || 'N/A',
+      //     rating: game.rating ? game.rating.toString() : 'N/A',
+      //   }));
 
-      setSearchedGames(gameData);
+      // setSearchedGames(gameData);
+      getGames({variables: {searchInput: searchInput}})
       setSearchInput('');
     } catch (err) {
       console.error(err);
@@ -118,12 +122,12 @@ const Homepage = () => {
       </Jumbotron>
       <Container>
         <h4 style={{ textAlign: 'center', paddingBottom: '2%' }}>
-          {searchedGames.length
-            ? `Viewing ${searchedGames.length} results:`
+          {data && data.getGame.length
+            ? `Viewing ${data.length} results:`
             : "Search for a specific game or be inspired by the developer's choices!"}
         </h4>
         <CardColumns>
-          {searchedGames.map((game) => {
+          {data && data.getGame.map((game) => {
             return (
               <Card key={game.gameId}>
                 {game.image ? (

@@ -17,13 +17,20 @@
 ### Description
 For the final project of our Bootcamp Course, we are building a MERN Stack application called Game Hunt! This application allows you to search for games from any platform, from any year, of any genre. It will show a cover image of the game, the name of the game, relese date, and an option to add the game to a list of favorites that you can access later by creating a secure login. 
 
-This was a collaborative project to use everything we have learned throughout the course to create a MERN stack single-page application with a focus on data and user demand. This application uses technologies including Performant Javascript, NoSQL databases, React single-page applications, GraphQL API's, Concurrent servers in a MERN app and Authentication. This project is also build as a mobile-first design, so that users can increasingly use their mobile devices to interact with the web app. This application is deployed to Heroku. [Click Here](  link to heroku )
+This was a collaborative project to use everything we have learned throughout the course to create a MERN stack single-page application with a focus on data and user demand. This application uses technologies including Performant Javascript, NoSQL databases, React single-page applications, GraphQL API's, Concurrent servers in a MERN app and Authentication. This project is also build as a mobile-first design, so that users can increasingly use their mobile devices to interact with the web app. This application is deployed to Heroku. [Click Here](https://project-3-game-hunt.herokuapp.com/)
 
-![Gif Demo](./gif.gif)
+----
+
+![Landing page, Logged In](/images/gh1.jpg)
+![Logged out, Log in page](/images/gh2.jpg)
+![Sign up page](/images/gh3.jpg)
+![Kirby search output](/images/gh4.jpg)
+![Save Game, Delete Game, Update Username](/images/gif.gif)
+
 ----
 
 ### Issues While Developing
- 🔧 Main issue was using challenge 21 as a backbone for the project because some of the code there was broken. It seemed like when we fixed one issue, another one came up.
+ 🔧There was an issue with using challenge 21 from our classwork modules as a backbone for the project, because some of the code there was broken. It seemed like when we fixed one issue, another one came up. We had some trouble hiding our API key. We were missing some react hooks, ie: use effect and use state.
 
 ----
 ### License
@@ -42,4 +49,3 @@ Amina Kurdi, Seif Enan, Nasir Ahmed
 <br />
 
 🌟_This README was generated with 💓 by [README-generator] (https://github.com/kurdiamina3/README-generator)🌟
-

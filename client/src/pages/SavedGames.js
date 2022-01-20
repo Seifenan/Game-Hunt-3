@@ -103,7 +103,6 @@ const SavedGames = () => {
           })}
         </CardColumns>
         <h2 style={{ textAlign: 'center' }}>
-          {/* {console.log(userData.savedGames)} */}
           {userData.savedGames.length
             ? `Saved Count: ${userData.savedGames.length} ${userData.savedGames.length === 1 ? 'Game' : 'Games'}`
             : 'No Saved Games to Display'}

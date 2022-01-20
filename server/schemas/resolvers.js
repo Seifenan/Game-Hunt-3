@@ -1,3 +1,4 @@
+const axios = require('axios');
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
 const { signToken } = require('../utils/auth');
@@ -16,6 +17,21 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
+    getGame: async (parent, args) => {
+      const response = await axios.get(`https://api.rawg.io/api/games?search=${args.searchInput}&key=${process.env.RAWG_API_KEY}`)
+
+      const gameData = await response.data.results.map((game) => (
+        {
+          gameId: game.slug,
+          title: game.name,
+          image: game.background_image || 'https://www.spearsandcorealestate.com/wp-content/themes/spears/images/no-image.png',
+          releaseDate: game.released || 'N/A',
+          rating: game.rating ? game.rating.toString() : 'N/A',
+        }
+      ));
+
+      return gameData
+    },
   },
 
   Mutation: {
@@ -26,8 +42,8 @@ const resolvers = {
       return { token, user };
     },
 
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    updateUser: async (parent, {_id, username}) => {
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    updateUser: async (parent, { _id, username }) => {
       const user = await User.findOneAndUpdate(
         { _id },
         { $set: { username } },
@@ -39,7 +55,7 @@ const resolvers = {
 
       return user;
     },
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

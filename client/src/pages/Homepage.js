@@ -51,7 +51,7 @@ const Homepage = () => {
 
       // const items = await response.json();
 
-      // const gameData = items.results.map((game) => (
+      //const gameData = items.results.map((game) => (
 
       //   {
       //     gameId: game.slug,

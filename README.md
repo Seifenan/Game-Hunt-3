@@ -8,7 +8,6 @@
 
 ## Table of Contents
 - [Description](#description)
-- [Issues](#issue)
 - [Contribution](#contribution)
 - [Questions](#questions)
 
@@ -27,10 +26,6 @@ This was a collaborative project to use everything we have learned throughout th
 ![Kirby search output](/images/gh4.jpg)
 ![Save Game, Delete Game, Update Username](/images/gif.gif)
 
-----
-
-### Issues While Developing
- 🔧There was an issue with using challenge 21 from our classwork modules as a backbone for the project, because some of the code there was broken. It seemed like when we fixed one issue, another one came up. We had some trouble hiding our API key. We were missing some react hooks, ie: use effect and use state.
 
 ----
 ### License

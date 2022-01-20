@@ -120,7 +120,7 @@ const Homepage = () => {
         <h4 style={{ textAlign: 'center', paddingBottom: '2%' }}>
           {searchedGames.length
             ? `Viewing ${searchedGames.length} results:`
-            : "Search for a specific game or choose from the developer's top choices!"}
+            : "Search for a specific game or be inspired by the developer's choices!"}
         </h4>
         <CardColumns>
           {searchedGames.map((game) => {

@@ -1,6 +1,14 @@
 import React from 'react';
 import { Jumbotron, Container, Card, CardGroup } from 'react-bootstrap';
 
+import { BsGithub } from 'react-icons/bs';
+import { FaUserTie } from 'react-icons/fa';
+
+
+
+
+
+
 // Turn Link to Icons!!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 const Footer = () => {
@@ -17,8 +25,8 @@ const Footer = () => {
             <Card.Text>Nasir Ahmed</Card.Text>
             {/* Replace all links with Icons!! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
             <CardGroup>
-              <Card.Link className='text-light' target='_blank' href='https://github.com/nasirahmed422'>GitHub</Card.Link>
-              <Card.Link className='text-light' target='_blank' href=''>Portfolio</Card.Link>
+              <Card.Link className='text-light' target='_blank' href='https://github.com/nasirahmed422'><BsGithub /></Card.Link>
+              <Card.Link className='text-light' target='_blank' href='https://nasirahmed422.github.io/NasirAhmed-Portfolio/'><FaUserTie  /></Card.Link>
             </CardGroup>
             {/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */}
           </Card>
@@ -29,8 +37,8 @@ const Footer = () => {
 
             {/* Replace all links with Icons!! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
             <CardGroup>
-              <Card.Link className='text-light' target='_blank' href='https://github.com/Seifenan'>GitHub</Card.Link>
-              <Card.Link className='text-light' target='_blank' href='https://github.com/Seifenan'>Portfolio</Card.Link>
+              <Card.Link className='text-light' target='_blank' href='https://github.com/Seifenan'><BsGithub /></Card.Link>
+              <Card.Link className='text-light' target='_blank' href=''><FaUserTie /></Card.Link>
             </CardGroup>
             {/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */}
           </Card>
@@ -40,8 +48,8 @@ const Footer = () => {
             <Card.Text>Amina Kurdi</Card.Text>
             {/* Replace all links with Icons!! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
             <CardGroup>
-              <Card.Link className='text-light' target='_blank' href='https://github.com/Kurdiamina3'>GitHub</Card.Link>
-              <Card.Link className='text-light' target='_blank' href=''>Portfolio</Card.Link>
+              <Card.Link className='text-light' target='_blank' href='https://github.com/Kurdiamina3'><BsGithub /></Card.Link>
+              <Card.Link className='text-light' target='_blank' href='https://secure-badlands-97898.herokuapp.com/'><FaUserTie /></Card.Link>
             </CardGroup>
             {/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */}
           </Card>

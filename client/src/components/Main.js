@@ -1,23 +1,11 @@
 import React from 'react';
-import { Jumbotron, Container, Button, Card, CardGroup } from 'react-bootstrap';
+import { Jumbotron, Container, Card, CardGroup } from 'react-bootstrap';
 
-import Auth from '../utils/auth';
-
-// import { savedGameIds, handleSaveGame } from '../pages/Homepage';
-
-
-// const Main = ({ handleSaveGame }) => {
 const Main = () => {
   return (
 
     <Container>
       <Jumbotron fluid="true" className='text-dark'>
-
-        {/* // disabled={savedGameIds?.some((savedGameId) => savedGameId === game.gameId)}
-              // onClick={() => handleSaveGame(game.gameId)}>
-              // {savedGameIds?.some((savedGameId) => savedGameId === game.gameId)
-              //   ? 'This game has been saved!'
-              //   : 'Save Game!!'} */}
         <CardGroup>
           <Card style={{ margin: '2%', justifyContent: 'space-between' }}>
             <Card.Img src='https://www.hollywoodreporter.com/wp-content/uploads/2017/11/super-mario-game_copy_-_h_2017.jpg' />
@@ -29,14 +17,6 @@ const Main = () => {
               <p>Release Date: 1985-9-13</p>
               <p>Rating: 4.7</p>
             </div>
-            {Auth.loggedIn() && (
-              <Card.Footer style={{ textAlign: 'center' }}>
-                {/* >>>>>>>>>>>>>> Edit button to save game ID to Saved Games!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
-                {/* <Button onClick={handleSaveGame({})}>Save Game!</Button> */}
-                <Button>Save Game!</Button>
-                {/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                 */}
-              </Card.Footer>
-            )}
           </Card>
           <Card style={{ margin: '2%', justifyContent: 'space-between' }}>
             <Card.Img src='https://wallpaperaccess.com/full/2800273.jpg' />
@@ -48,13 +28,6 @@ const Main = () => {
               <p>Release Date: 2013-9-17</p>
               <p>Rating: 4.5</p>
             </div>
-            {Auth.loggedIn() && (
-              <Card.Footer style={{ textAlign: 'center' }}>
-                {/* <Button onClick={handleSaveGame({})}>Save Game!</Button> */}
-                <Button>Save Game!</Button>
-                {/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                 */}
-              </Card.Footer>
-            )}
           </Card>
           <Card style={{ margin: '2%', justifyContent: 'space-between' }}>
             <Card.Img src='https://lh3.googleusercontent.com/WebglHOYlW-2P7ADP9oUSSrgy12PHyAE6GP_jmJkQOZZ1XH7Pa_7216EK2qS7iJFvncqOaDjg40BrYdzPbB9qNwn' />
@@ -66,13 +39,6 @@ const Main = () => {
               <p>Release Date: 2009-10-27</p>
               <p>Rating: 3.1</p>
             </div>
-            {Auth.loggedIn() && (
-              <Card.Footer style={{ textAlign: 'center' }}>
-                {/* <Button onClick={handleSaveGame({})}>Save Game!</Button> */}
-                <Button>Save Game!</Button>
-                {/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                 */}
-              </Card.Footer>
-            )}
           </Card>
         </CardGroup>
       </Jumbotron>

@@ -7,13 +7,17 @@ import { Form, Button, Alert, Col, Row } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
+import { UPDATE_USER } from '../utils/actions';
+import { useStoreContext } from '../utils/GlobalState';
+
 import Auth from '../utils/auth';
 
-const LoginForm = () => {
+const LoginForm = ({ onSubmit }) => {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [login, { error }] = useMutation(LOGIN_USER);
+  const [ dispatch] = useStoreContext();
 
 
   const handleInputChange = (event) => {
@@ -21,7 +25,7 @@ const LoginForm = () => {
     setUserFormData({ ...userFormData, [name]: value });
   };
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
 
     // check if form has everything (as per react-bootstrap docs)
@@ -30,28 +34,33 @@ const LoginForm = () => {
       event.preventDefault();
       event.stopPropagation();
     }
-
-    try {
-      const { data } = await login({
+      const { data } = login({
         variables: { ...userFormData },
-      });
+      }).then(({data}) => {
+        Auth.login(data.login.token);
+        dispatch({ type: UPDATE_USER, user: data.login.user});
+      // dispatch user data to global state
+      }).catch((err) => {
+        console.error(err);
+        setShowAlert(true);
+     });
 
-      Auth.login(data.login.token);
-    } catch (err) {
-      console.error(err);
-      setShowAlert(true);
-    }
 
     setUserFormData({
       username: '',
       email: '',
       password: '',
     });
+
+    onSubmit();
   };
 
   return (
     <>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+      <Form noValidate validated={validated} onSubmit={e => {
+        e.preventDefault();
+      }
+}>
 
         <Row className="align-items-center">
 
@@ -103,6 +112,7 @@ const LoginForm = () => {
           <Col sm={6}>
 
             <Button
+            onClick={handleFormSubmit}
               disabled={!(userFormData.email && userFormData.password)}
               type='submit'
               variant='success'>

@@ -38,7 +38,7 @@ const Footer = () => {
             {/* Replace all links with Icons!! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
             <CardGroup>
               <Card.Link className='text-light' target='_blank' href='https://github.com/Seifenan'><BsGithub /></Card.Link>
-              <Card.Link className='text-light' target='_blank' href=''><FaUserTie /></Card.Link>
+              <Card.Link className='text-light' target='_blank' href='https://seifenan.github.io/'><FaUserTie /></Card.Link>
             </CardGroup>
             {/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */}
           </Card>

@@ -53,7 +53,6 @@ const Homepage = () => {
         }));
 
       setSearchedGames(gameData);
-      getGames({variables: {searchInput: searchInput}})
       setSearchInput('');
     } catch (err) {
       console.error(err);

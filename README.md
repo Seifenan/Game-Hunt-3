@@ -14,7 +14,7 @@ For the final project of our Bootcamp Course, we are building a MERN Stack appli
 
 This was a collaborative project to use everything we have learned throughout the course to create a MERN stack single-page application with a focus on data and user demand. This application uses technologies including Performant Javascript, NoSQL databases, React single-page applications, GraphQL API's, Concurrent servers in a MERN app and Authentication. This project is also build as a mobile-first design, so that users can increasingly use their mobile devices to interact with the web app. This application is deployed to Heroku. 
 
-[Deployed App](https://project-3-game-hunt.herokuapp.com/)
+[Deployed App](https://game-hunt-3.herokuapp.com/)
 
 ![Landing page, Logged In](/images/gh1.jpg)
 ![Logged out, Log in page](/images/gh2.jpg)

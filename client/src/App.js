@@ -1,20 +1,13 @@
 import React from 'react';
 
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
 import { StoreProvider } from './utils/GlobalState';
 
 import Router from './pages';
 
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-
-
 import './App.css';
-
 
 const httpLink = createHttpLink({
   uri: '/graphql',

@@ -2,8 +2,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert, Col, Row } from 'react-bootstrap';
 
-// import { loginUser } from '../utils/API';
-
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
@@ -17,8 +15,7 @@ const LoginForm = ({ onSubmit }) => {
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [login, { error }] = useMutation(LOGIN_USER);
-  const [ dispatch] = useStoreContext();
-
+  const [dispatch] = useStoreContext();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -34,17 +31,16 @@ const LoginForm = ({ onSubmit }) => {
       event.preventDefault();
       event.stopPropagation();
     }
-      const { data } = login({
-        variables: { ...userFormData },
-      }).then(({data}) => {
-        Auth.login(data.login.token);
-        dispatch({ type: UPDATE_USER, user: data.login.user});
+    const { data } = login({
+      variables: { ...userFormData },
+    }).then(({ data }) => {
+      Auth.login(data.login.token);
+      dispatch({ type: UPDATE_USER, user: data.login.user });
       // dispatch user data to global state
-      }).catch((err) => {
-        console.error(err);
-        setShowAlert(true);
-     });
-
+    }).catch((err) => {
+      console.error(err);
+      setShowAlert(true);
+    });
 
     setUserFormData({
       username: '',
@@ -60,20 +56,14 @@ const LoginForm = ({ onSubmit }) => {
       <Form noValidate validated={validated} onSubmit={e => {
         e.preventDefault();
       }
-}>
-
+      }>
         <Row className="align-items-center">
-
           <Col sm={12}>
-
             <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
               Something went wrong with your login credentials!
             </Alert>
-
           </Col>
-
           <Col sm={6}>
-
             <Form.Group>
               <Form.Label htmlFor='email'>Email</Form.Label>
               <Form.Control
@@ -86,11 +76,8 @@ const LoginForm = ({ onSubmit }) => {
               />
               <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
             </Form.Group>
-
           </Col>
-
           <Col sm={6}>
-
             <Form.Group>
               <Form.Label htmlFor='password'>Password</Form.Label>
               <Form.Control
@@ -103,33 +90,22 @@ const LoginForm = ({ onSubmit }) => {
               />
               <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
             </Form.Group>
-
           </Col>
-
         </Row>
-
         <Row className="align-items-center">
           <Col sm={6}>
-
             <Button
-            onClick={handleFormSubmit}
+              onClick={handleFormSubmit}
               disabled={!(userFormData.email && userFormData.password)}
               type='submit'
               variant='success'>
               Submit
             </Button>
             {error && <div>Login failed</div>}
-
           </Col>
-
           <Col sm={6}>
-
             <Form.Check type="checkbox" id="autoSizingCheck2" label="Remember me" />
-
           </Col>
-
-         
-
         </Row>
       </Form>
     </>

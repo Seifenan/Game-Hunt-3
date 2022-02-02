@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button, Row, Col, CardGroup, Modal } from 'react-bootstrap';
-
 import { FiSettings } from 'react-icons/fi';
+
+import { useMutation } from '@apollo/client';
 
 import Profile from '../components/Profile';
 
-import { useMutation } from '@apollo/client';
 import { REMOVE_GAME } from '../utils/mutations';
-
-import Auth from '../utils/auth';
 import { removeGameId } from '../utils/localStorage';
-
 import { useStoreContext } from '../utils/GlobalState';
+import Auth from '../utils/auth';
 
 const SavedGames = () => {
   const [removeGame] = useMutation(REMOVE_GAME);
@@ -76,7 +74,7 @@ const SavedGames = () => {
         </Modal.Body>
         <Modal.Footer style={{ display: 'flex', justifyContent: 'space-between' }}>
           <p>Email: {userData.email}</p>
-          <p>Unique User ID: {userData._id}</p>          
+          <p>Unique User ID: {userData._id}</p>
         </Modal.Footer>
       </Modal>
 

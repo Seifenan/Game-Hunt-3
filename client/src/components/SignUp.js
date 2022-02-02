@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert, Col, Row } from 'react-bootstrap';
 
-// import { createUser } from '../utils/API';
-
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
 
+import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const SignupForm = ({ onSubmit }) => {
@@ -17,7 +15,6 @@ const SignupForm = ({ onSubmit }) => {
   const [showAlert, setShowAlert] = useState(false);
 
   const [addUser, { error }] = useMutation(ADD_USER);
-
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -112,24 +109,16 @@ const SignupForm = ({ onSubmit }) => {
             </Form.Group>
           </Col>
 
-{/* NOT COMPLETE!!!!!!!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */}
-{/* Add Password Confirmation Field Here!!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
           <Col sm={6}>
             <Form.Group>
               <Form.Label htmlFor='password'>Confirm Password</Form.Label>
               <Form.Control
                 type='password'
                 placeholder='Confirm password'
-                name='password'
-                // onChange={handleInputChange}
-                // value={userFormData.password}
-                required
               />
-              <Form.Control.Feedback type='invalid'>Passwords do NOT match!</Form.Control.Feedback>
             </Form.Group>
           </Col>
         </Row>
-{/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */}
 
         <Row className="align-items-center">
           <Col sm={12}>

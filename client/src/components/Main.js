@@ -7,6 +7,7 @@ const Main = () => {
     <Container>
       <Jumbotron fluid="true" className='text-dark'>
         <CardGroup>
+
           <Card style={{ margin: '2%', justifyContent: 'space-between' }}>
             <Card.Img src='https://www.hollywoodreporter.com/wp-content/uploads/2017/11/super-mario-game_copy_-_h_2017.jpg' />
             <Card.Title style={{ textAlign: 'center' }}>Super Mario Bros</Card.Title>
@@ -18,6 +19,7 @@ const Main = () => {
               <p>Rating: 4.7</p>
             </div>
           </Card>
+
           <Card style={{ margin: '2%', justifyContent: 'space-between' }}>
             <Card.Img src='https://wallpaperaccess.com/full/2800273.jpg' />
             <Card.Title style={{ textAlign: 'center', paddingTop: '20px' }}>Grand Theft Auto V</Card.Title>
@@ -29,6 +31,7 @@ const Main = () => {
               <p>Rating: 4.5</p>
             </div>
           </Card>
+
           <Card style={{ margin: '2%', justifyContent: 'space-between' }}>
             <Card.Img src='https://lh3.googleusercontent.com/WebglHOYlW-2P7ADP9oUSSrgy12PHyAE6GP_jmJkQOZZ1XH7Pa_7216EK2qS7iJFvncqOaDjg40BrYdzPbB9qNwn' />
             <Card.Title style={{ textAlign: 'center' }}>League of Legends</Card.Title>
@@ -40,6 +43,7 @@ const Main = () => {
               <p>Rating: 3.1</p>
             </div>
           </Card>
+
         </CardGroup>
       </Jumbotron>
     </Container>

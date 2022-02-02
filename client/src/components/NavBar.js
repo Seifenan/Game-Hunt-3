@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 
@@ -8,15 +7,15 @@ import LogIn from './LogIn';
 
 import Auth from '../utils/auth';
 import { useStoreContext } from '../utils/GlobalState';
-import { UPDATE_USER} from '../utils/actions';
+import { UPDATE_USER } from '../utils/actions';
 
 const NavBar = () => {
   const [showModal, setShowModal] = useState(false);
-  const [state,dispatch] = useStoreContext()
+  const [state, dispatch] = useStoreContext()
 
   const handleLogout = () => {
     Auth.logout();
-    dispatch({ type: UPDATE_USER, user: null});
+    dispatch({ type: UPDATE_USER, user: null });
   }
 
   return (
@@ -70,10 +69,10 @@ const NavBar = () => {
           <Modal.Body>
             <Tab.Content>
               <Tab.Pane eventKey='login'>
-                <LogIn handleModalClose={() => setShowModal(false)} onSubmit={() => setShowModal(false)}/>
+                <LogIn handleModalClose={() => setShowModal(false)} onSubmit={() => setShowModal(false)} />
               </Tab.Pane>
               <Tab.Pane eventKey='signup'>
-                <SignUp handleModalClose={() => setShowModal(false)} onSubmit={() => setShowModal(false)}/>
+                <SignUp handleModalClose={() => setShowModal(false)} onSubmit={() => setShowModal(false)} />
               </Tab.Pane>
             </Tab.Content>
           </Modal.Body>

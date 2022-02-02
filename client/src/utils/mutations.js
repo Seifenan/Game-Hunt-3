@@ -23,8 +23,6 @@ export const ADD_USER = gql`
   }
 `;
 
-// >>>> ADD UPDATE USER MUTATION!!!!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
 export const UPDATE_USER = gql`
 mutation updateUser($id: ID!, $username: String!) {
   updateUser(_id: $id, username: $username) {
@@ -42,8 +40,6 @@ mutation updateUser($id: ID!, $username: String!) {
   }
 }
 `;
-
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 export const SAVE_GAME = gql`
   mutation saveGame($input: savedGame!) {

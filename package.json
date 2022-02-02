@@ -1,5 +1,5 @@
 {
-  "name": "project-3-game-hunt",
+  "name": "game-hunt-3",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -17,10 +17,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Seifenan/project-3-game-hunt.git"
+    "url": "git+https://github.com/Seifenan/game-hunt-3.git"
   },
   "bugs": {
-    "url": "https://github.com/Seifenan/project-3-game-hunt/issues"
+    "url": "https://github.com/Seifenan/game-hunt-3/issues"
   },
-  "homepage": "https://github.com/Seifenan/project-3-game-hunt#readme"
+  "homepage": "https://github.com/Seifenan/game-hunt-3#readme"
 }

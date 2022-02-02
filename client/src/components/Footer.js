@@ -49,8 +49,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-
-// https://avatars.githubusercontent.com/u/60494706?v=4
-
-// https://ca.slack-edge.com/T027T98NZ1V-U029A5TB62Y-3fa9af47fb02-512

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
-import Auth from '../utils/auth';
-import { saveGameIds, getSavedGameIds } from '../utils/localStorage';
-
 import { useMutation } from '@apollo/client';
+
+import { saveGameIds, getSavedGameIds } from '../utils/localStorage';
 import { SAVE_GAME } from '../utils/mutations';
+import Auth from '../utils/auth';
+
 import Main from '../components/Main';
 
 const Homepage = () => {
@@ -58,7 +59,6 @@ const Homepage = () => {
       console.error(err);
     }
   };
-
 
   // create function to handle saving a game to our database
   const handleSaveGame = async (gameId) => {
@@ -144,9 +144,6 @@ const Homepage = () => {
         </CardColumns>
       </Container>
       <Main />
-      {/* <Main 
-      handleSaveGame={handleSaveGame}
-      /> */}
     </>
   );
 };
